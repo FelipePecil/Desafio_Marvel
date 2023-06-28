@@ -26,14 +26,19 @@ function getCharacterList() {
     
     const urlAPI = "http://gateway.marvel.com/v1/public/characters?limit=9&offset="+offset+"&ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;
 
-    // sla mas funcionou
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
-            getImages(data);
-        }
-    };
+    // Criação de um objeto XMLHttpRequest para fazer requisições assíncronas
+var xhttp = new XMLHttpRequest();
+
+// Função que será executada quando o estado da requisição mudar
+xhttp.onreadystatechange = function() {
+  // Verifica se a requisição foi concluída e a resposta está pronta
+  if (this.readyState == 4 && this.status == 200) {
+    // Converte a resposta de texto em um objeto JSON
+    var data = JSON.parse(this.responseText);
+    // Chama a função getHistorys passando o objeto de dados como parâmetro
+    getHistorys(data);
+  }
+};
     xhttp.open("GET", urlAPI, true);
     xhttp.send();
 }
@@ -49,14 +54,19 @@ function showHistorys(elemento) {
     const urlAPI = "https://gateway.marvel.com:443/v1/public/characters/"+codigo+"/stories?ts="+timeStamp+"&apikey="+publicKey+"&hash="+hash;
     console.log(urlAPI);
     
-    // sla mas funcionou
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
-            getHistorys(data);
-        }
-    };
+    // Criação de um objeto XMLHttpRequest para fazer requisições assíncronas
+var xhttp = new XMLHttpRequest();
+
+// Função que será executada quando o estado da requisição mudar
+xhttp.onreadystatechange = function() {
+  // Verifica se a requisição foi concluída e a resposta está pronta
+  if (this.readyState == 4 && this.status == 200) {
+    // Converte a resposta de texto em um objeto JSON
+    var data = JSON.parse(this.responseText);
+    // Chama a função getHistorys passando o objeto de dados como parâmetro
+    getHistorys(data);
+  }
+};
     xhttp.open("GET", urlAPI, true);
     xhttp.send();
 
